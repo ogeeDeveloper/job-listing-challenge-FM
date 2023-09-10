@@ -4,10 +4,10 @@
 
 @layer utilities {
   .bg-image-mobile {
-    background-image: url('../images/bg-header-mobile.svg');
+    background-image: url('/images/bg-header-mobile.svg');
   }
   .bg-image-desktop {
-    background-image: url('../images/bg-header-desktop.svg');
+    background-image: url('/images/bg-header-desktop.svg');
   }
 }
 
