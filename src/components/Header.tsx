@@ -22,11 +22,13 @@ const Header = ({filters, setFilters}: Props) => {
     
     const clearFilters = () => {
         setFilters([]);
+        setInputValue('');
     };
 
     const onFilterInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter" && inputValue) {
           addFilter(inputValue);
+          setInputValue('');
           setInputValue('');
         }
     };
@@ -56,6 +58,7 @@ const Header = ({filters, setFilters}: Props) => {
                     type="text" 
                     placeholder="Add filter" 
                     className="flex-grow bg-transparent outline-none"
+                    value={inputValue}
                     onKeyDown={onFilterInput}
                     onChange={onChangeInput}
                 />
