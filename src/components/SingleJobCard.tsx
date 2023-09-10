@@ -16,21 +16,21 @@ const SingleJobCard = ({job}: JobCardProps) => {
 
         <div className="flex flex-grow flex-col justify-between pr-4">
             <div>
-                <span className="font-bold text-lg">{job.company}</span>
+                <span className="font-bold text-2xlg">{job.company}</span>
                 {job.new && <span className="ml-2 bg-green-500 text-white text-sm py-1 px-2 rounded-full">NEW!</span>}
                 {job.featured && <span className="ml-2 bg-black text-white text-sm py-1 px-2 rounded-full">FEATURED</span>}
             </div>
             <div className="text-gray-800 font-medium">{job.position}</div>
-            <div className="text-gray-500 text-sm">
+            <div className="text-gray-500 text-sm space-x-8">
                 {job.postedAt} • {job.contract} • {job.location}
             </div>
         </div>
 
         <div className="flex space-x-2">
-            <span className="text-gray-800 bg-gray-200 p-2 rounded">{job.role}</span>
-            <span className="text-gray-800 bg-gray-200 p-2 rounded">{job.level}</span>
+            <span className="text-primary bg-neutral-lightBg hover:bg-primary hover:text-neutral-lightBg cursor-pointer p-2 rounded">{job.role}</span>
+            <span className="text-primary bg-neutral-lightBg hover:bg-primary hover:text-neutral-lightBg cursor-pointer p-2 rounded">{job.level}</span>
           {job.languages.map((lang, index) => (
-            <span key={index} className="text-gray-800 bg-gray-200 p-2 rounded">{lang}</span>
+            <span key={index} className="text-primary bg-neutral-lightBg hover:bg-primary hover:text-neutral-lightBg cursor-pointer p-2 rounded">{lang}</span>
           ))}
         </div>
     </div>

@@ -6,7 +6,10 @@ export default function Home() {
   return (
    <>
     <Header />
-     <AllJobListing jobs={jobData}/>
+    <div className="mt-8  w-[80%] mx-auto">
+     <AllJobListing 
+      jobs={jobData}/>
+    </div>
    </>
   )
 }

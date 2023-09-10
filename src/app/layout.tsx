@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${league_spartan.className}  m-0 p-0`}>{children}</body>
+      <body className={`${league_spartan.className} bg-neutral-lightBg m-0 p-0`}>{children}</body>
     </html>
   )
 }
