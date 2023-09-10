@@ -79,7 +79,7 @@ const Header = ({filters, setFilters, jobData }: Props) => {
     };
     
   return (
-    <header className="relative w-full bg-no-repeat bg-center bg-cover h-[150px] bg-primary mobile:bg-image-mobile desktop:bg-image-desktop mb-14" 
+    <header className="relative w-full bg-no-repeat bg-center bg-cover h-[150px] bg-primary mobile:bg-image-mobile desktop:bg-image-desktop mb-16" 
         id="header-section-id" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500" data-aos-once="true" data-aos-anchor-placement="top-center">
         <div className="absolute bottom-[-25px] left-1/2 transform -translate-x-1/2 p-4 bg-white bg-opacity-100 rounded-md shadow-lg w-[80%] mx-auto">
             <div className="flex items-center ml-4 space-x-2">
@@ -108,7 +108,7 @@ const Header = ({filters, setFilters, jobData }: Props) => {
                     onChange={onChangeInput}
                 />
 
-                <div className="absolute top-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg">
+                <div className="absolute top-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-50">
                     {suggestions.map((suggestion, index) => (
                         <div
                             key={index}
