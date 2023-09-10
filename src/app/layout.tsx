@@ -7,6 +7,9 @@ const league_spartan = League_Spartan({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Job listings',
   description: 'Job listings challenge for Frontend Mentor',
+  icons: {
+    icon:'/_next/static/media/metadata/favicon.png',
+  },
 }
 
 export default function RootLayout({
