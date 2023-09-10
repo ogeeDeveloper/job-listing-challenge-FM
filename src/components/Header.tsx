@@ -1,15 +1,56 @@
 "use client"
 
-import { KeyboardEvent, useState } from "react";
+import { Job } from "@/types/types";
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
 
 interface Props {
     filters: string[];
     setFilters: React.Dispatch<React.SetStateAction<string[]>>;
-  }
+    jobData: Job[];
+}
 
-const Header = ({filters, setFilters}: Props) => {
+const Header = ({filters, setFilters, jobData }: Props) => {
     const [inputValue, setInputValue] = useState<string>('');
+    const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [allPossibleFilters, setAllPossibleFilters] = useState<string[]>([]);
 
+    useEffect(() => {
+        // const newAllPossibleFilters = new Set();
+        const newAllPossibleFilters = new Set<string>();
+    
+        jobData.forEach((job) => {
+          newAllPossibleFilters.add(job.role);
+          newAllPossibleFilters.add(job.level);
+          job.languages.forEach((language) => newAllPossibleFilters.add(language));
+          job.tools.forEach((tool) => newAllPossibleFilters.add(tool));
+        });
+    
+        // setAllPossibleFilters([...newAllPossibleFilters]);
+        setAllPossibleFilters(Array.from(newAllPossibleFilters));
+      }, [jobData]);
+
+      useEffect(() => {
+        if (inputValue) {
+          setSuggestions(
+            allPossibleFilters.filter((filter) =>
+              filter.toLowerCase().startsWith(inputValue.toLowerCase())
+            )
+          );
+        } else {
+          setSuggestions([]);
+        }
+      }, [inputValue, allPossibleFilters]);useEffect(() => {
+        if (inputValue) {
+          setSuggestions(
+            allPossibleFilters.filter((filter) =>
+              filter.toLowerCase().startsWith(inputValue.toLowerCase())
+            )
+          );
+        } else {
+          setSuggestions([]);
+        }
+      }, [inputValue, allPossibleFilters]);
+      
     const addFilter = (newFilter: string) => {
         if(!filters.includes(newFilter)) {
           setFilters([...filters, newFilter]);
@@ -25,7 +66,7 @@ const Header = ({filters, setFilters}: Props) => {
         setInputValue('');
     };
 
-    const onFilterInput = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    const onFilterInput = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter" && inputValue) {
           addFilter(inputValue);
           setInputValue('');
@@ -33,7 +74,7 @@ const Header = ({filters, setFilters}: Props) => {
         }
     };
 
-    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
     };
     
@@ -62,6 +103,21 @@ const Header = ({filters, setFilters}: Props) => {
                     onKeyDown={onFilterInput}
                     onChange={onChangeInput}
                 />
+
+                <div className="absolute top-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg">
+                    {suggestions.map((suggestion, index) => (
+                        <div
+                            key={index}
+                            className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                            onClick={() => {
+                            addFilter(suggestion);
+                            setInputValue('');
+                            }}
+                        >
+                            {suggestion}
+                        </div>
+                        ))}
+                    </div>
 
                 {/* Clear all filters button */}
                 <button className="ml-auto text-primary hover:text-primary hover:underline transition-all duration-300 ease-in-out" onClick={clearFilters}>

@@ -10,7 +10,6 @@ interface JobListProps {
 const AllJobListing = ({jobs, filters}: JobListProps) => {
   const filteredJobs = jobs.filter(job => {
     return filters.every(filter => {
-      console.log(job.languages, job.role);
       return job.languages.includes(filter) || job.role.includes(filter);
     });
   });
