@@ -85,14 +85,18 @@ const Header = ({filters, setFilters, jobData }: Props) => {
             <div className="flex items-center ml-4 space-x-2">
                 {/* Individual filters with 'x' to remove them */}
                 {filters.map((filter, index) => (
-                    <div key={index} className="flex items-center space-x-2 bg-neutral-lightFilter text-neutral-dark rounded-md p-2 mr-2 font-bold">
-                        <span>{filter}</span>
-                        <button className="p-1 
-                        text-white bg-primary hover:text-white hover:bg-black hover:underline transition-all duration-300 ease-in-out" onClick={() => removeFilter(index)}>
-                            x
-                        </button>
-                    </div>
-                ))}
+                  <div key={index} className="flex items-center bg-neutral-lightFilter px-2 text-neutral-dark rounded-md mr-2 font-bold">
+                      <span className="flex-shrink-1 pr-2">{filter}</span>
+                      <button 
+                      className="flex-1 p-2 text-center
+                      text-white bg-primary 
+                      text-xl hover:text-white 
+                      hover:bg-black hover:no-underline transition-all duration-300 ease-in-out" 
+                      onClick={() => removeFilter(index)}>
+                          x
+                      </button>
+                  </div>      
+              ))}
 
                 {/* Input field to add new filters */}
                 <input 

@@ -14,7 +14,7 @@ const AllJobListing = ({jobs, filters}: JobListProps) => {
     });
   });
   return (
-    <div className="space-y-6">
+    <div className="desktop:space-y-6 mobile:space-y-14">
       {/* {jobs.map((job) => (
         <SingleJobCard key={job.id} job={job} />
       ))} */}
