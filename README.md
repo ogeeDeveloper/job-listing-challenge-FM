@@ -47,6 +47,7 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [TailwindCss](https://tailwindcss.com/) - For styles
+- [Typescript](https://www.typescriptlang.org/) - For adding types
 
 
 ### What I learned
